@@ -25,7 +25,7 @@ frontend/.vite/
 .vscode/
 .idea/
 *.swp
-
+gym_app/
 # OS
 .DS_Store
 Thumbs.db
