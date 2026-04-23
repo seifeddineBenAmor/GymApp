@@ -74,7 +74,7 @@ class ProgramDetail(Base):
     exercise_code = Column(String(255), ForeignKey('exercises.code'), nullable=True)
     sequence = Column(Integer, nullable=False)
     day = Column(Integer, nullable=False)
-    type = Column(Enum('exercise', 'break'), nullable=False)
+    type = Column(Enum('exercise', name='detail_type'), nullable=False)
     program = relationship('Program', back_populates='details')
     exercise = relationship('Exercise', back_populates='program_details')
 
