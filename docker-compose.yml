@@ -28,7 +28,7 @@ services:
       - ./backend/uploads:/app/uploads # persist uploads
       - ./backend/videos:/app/videos   # persist videos
     ports:
-      - "8000:8000"
+      - "9000:8000"
     depends_on:
       db:
         condition: service_healthy
