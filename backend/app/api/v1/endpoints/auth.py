@@ -44,7 +44,7 @@ async def login(body: LoginRequest, db: AsyncSession = Depends(get_db)):
     if not user or not verify_password(body.password, user.password_hash):
         raise HTTPException(status_code=401, detail="User does not exist or wrong password.")
     if not user.is_confirmed:
-        raise HTTPException(status_code=403, detail="Unauthorized: user not confirmed yet.")
+        raise HTTPException(status_code=403, detail="User not confirmed yet.")
     
     return {"access_token": create_access_token(user.id), "token_type": "bearer"}
 
