@@ -11,13 +11,13 @@ from app.services.storage import save_file,delete_file
 
 router = APIRouter()
 
-@router.get("/categories",response_model=list[CategoryResponse])
+@router.get("/",response_model=list[CategoryResponse])
 async def get_categories( db: AsyncSession = Depends(get_db), _=Depends(get_current_admin)):
     result = await db.execute(select(Category))
     categories = result.scalars().all()
     return categories
 
-@router.post("/categories",status_code=201,response_model=CategoryResponse)
+@router.post("/",status_code=201,response_model=CategoryResponse)
 async def post_categories(db : AsyncSession = Depends(get_db),     
                             name: str = Form(...),
                             icon: UploadFile = File(...),
@@ -39,7 +39,7 @@ async def post_categories(db : AsyncSession = Depends(get_db),
     await db.refresh(category)
     return category
 
-@router.patch("/categories/{id}", response_model=CategoryResponse)
+@router.patch("/{id}", response_model=CategoryResponse)
 async def patch_category(id:int,
                          name: str = Form(None),
                          icon: UploadFile = File(None),
@@ -67,7 +67,7 @@ async def patch_category(id:int,
     await db.refresh(category)
     return category
 
-@router.delete("/categories/{id}", status_code=204)
+@router.delete("/{id}", status_code=204)
 async def delete_category(id:int,
                           db:AsyncSession=Depends(get_db),
                           _=Depends(get_current_admin)):
