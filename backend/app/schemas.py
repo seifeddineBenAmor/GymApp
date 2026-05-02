@@ -2,6 +2,15 @@ from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional
 from datetime import date, datetime
 
+class CategoryResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    name :str
+    number_of_instances :int
+    icone_path: str
+    icone_path_female: str
+
+
 class RegisterRequest(BaseModel):
     email: EmailStr
     password: str
