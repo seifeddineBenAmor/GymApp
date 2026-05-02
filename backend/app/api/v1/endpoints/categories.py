@@ -5,8 +5,6 @@ from app.db.session import get_db
 from app.db.models import Category
 from app.core.security import get_current_admin
 from app.schemas import CategoryResponse
-import shutil, os, uuid
-from app.core.config import settings
 from app.services.storage import save_file,delete_file
 
 router = APIRouter()
