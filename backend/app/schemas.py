@@ -2,6 +2,15 @@ from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional
 from datetime import date, datetime
 
+class ExerciseResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    code : str
+    name: str
+    category_id : int
+    description : str
+    video_path: str
+    video_path_female : str
+
 class CategoryResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: int
