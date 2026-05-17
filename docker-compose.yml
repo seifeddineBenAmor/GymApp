@@ -3,16 +3,17 @@ services:
   db:
     image: postgres:16-alpine
     restart: unless-stopped
+    env_file: ./backend/.env
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-urbangym}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-urbangym}
-      POSTGRES_DB: ${POSTGRES_DB:-urbangym}
-    volumes:
+      POSTGRES_USER: ${POSTGRES_USER:-gymapp}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-gymapp}
+      POSTGRES_DB: ${POSTGRES_DB:-gymapp}
+    volumes:  
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-urbangym}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-gymapp}"]
       interval: 5s
       timeout: 5s
       retries: 5

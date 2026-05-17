@@ -16,6 +16,7 @@ build/
 # Uploads / videos (never commit binary content)
 backend/uploads/
 backend/videos/
+backend/.env
 
 # Node
 frontend/node_modules/
