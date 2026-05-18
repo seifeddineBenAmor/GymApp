@@ -2,15 +2,22 @@ from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional
 from datetime import date, datetime
 
-class ExerciseResponse(BaseModel):
+class ProgramResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
-    code : str
+    id: int
     name: str
-    category_id : int
-    description : str
-    video_path: str
-    video_path_female : str
+    creator: str
+    created_at: datetime
 
+class ProgramDetailResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    program_id: int
+    exercise_code: Optional[str]
+    sequence: int
+    day: int
+    type: str
+    
 class CategoryResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: int
